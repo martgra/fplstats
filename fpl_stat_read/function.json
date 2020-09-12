@@ -1,0 +1,18 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "mytimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 * */6 * * *"
+    },
+    {
+      "name": "outputblob",
+      "type": "blob",
+      "path": "fplstats/{DateTime}_data.txt",
+      "connection": "StorageConnection",
+      "direction": "out"
+    }
+  ]
+}
