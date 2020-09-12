@@ -10,7 +10,7 @@
     {
       "name": "outputblob",
       "type": "blob",
-      "path": "fplstats/{DateTime}_data.txt",
+      "path": "fplstats/{DateTime}_data.json",
       "connection": "StorageConnection",
       "direction": "out"
     }
