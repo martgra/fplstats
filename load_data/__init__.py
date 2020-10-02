@@ -1,7 +1,8 @@
 import logging
 import json
 import azure.functions as func
-
+from random import randint
+from fpl.data import transformations
 
 def main(myblob: func.InputStream, outputDoc: func.Out[func.DocumentList]):
     logging.info(f"Python blob trigger function processed blob \n"
@@ -10,12 +11,10 @@ def main(myblob: func.InputStream, outputDoc: func.Out[func.DocumentList]):
     
 
     outdata = json.loads(myblob.read().decode('utf-8'))
-    for i in outdata["elements"]:
-        logging.info(type(i))
-        i["datetime"] = str(outdata["download_time"])
-        i["player_id"] = i["id"]
-        del i["id"]
-        
+    download_time = outdata["download_time"]
+    gameweek = transformations.get_game_week(outdata)
+    transformations.add_gw_and_download_time(outdata["elements"], download_time, gameweek)
+    transformations.add_unique_id(outdata["elements"])
     outputDoc.set(func.DocumentList(outdata["elements"]))
 
     
