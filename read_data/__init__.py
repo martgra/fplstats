@@ -1,13 +1,16 @@
+"""Read data from Cosmos db."""
+import json
 import logging
 
 import azure.functions as func
-import json
 
 
-def main(req: func.HttpRequest, inputDocument: func.DocumentList) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-
-    listed = [dict(i) for i in inputDocument]
+def main(req: func.HttpRequest, input_document: func.DocumentList) -> func.HttpResponse:
+    """Serverless function to trigger read from Cosmos DB."""
+    # pylint: disable=E1136
+    logging.info(f"Python HTTP trigger function processed a request {req.body}.")
+    listed = [dict(i) for i in input_document]
     listed = bytes(json.dumps(listed, ensure_ascii=False).encode("utf-8"))
-    return func.HttpResponse(body=listed, mimetype="application/json", headers={"Content-Length": str(len(listed))})
-    
+    return func.HttpResponse(
+        body=listed, mimetype="application/json", headers={"Content-Length": str(len(listed))}
+    )

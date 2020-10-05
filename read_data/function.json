@@ -10,7 +10,7 @@
         "get",
         "post"
       ],
-      "route":"read/gw/{gameweek}"
+      "route": "read/gw/{gameweek}"
     },
     {
       "type": "http",
@@ -20,11 +20,11 @@
     {
       "type": "cosmosDB",
       "direction": "in",
-      "name": "inputDocument",
+      "name": "input_document",
       "databaseName": "fplstats",
       "collectionName": "elements",
       "connectionStringSetting": "DB_CONNECTION",
       "sqlQuery": "SELECT * from c where c.gameweek = StringToNumber({gameweek})"
-        }
+    }
   ]
 }
