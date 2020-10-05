@@ -12,7 +12,7 @@ def main(myblob: func.InputStream, outputDoc: func.Out[func.DocumentList]):
 
     outdata = json.loads(myblob.read().decode('utf-8'))
     download_time = outdata["download_time"]
-    gameweek = transformations.get_game_week(outdata)
+    gameweek = transformations.get_game_week(outdata["events"])
     transformations.add_gw_and_download_time(outdata["elements"], download_time, gameweek)
     transformations.add_unique_id(outdata["elements"])
     outputDoc.set(func.DocumentList(outdata["elements"]))
