@@ -17,7 +17,7 @@
     {
       "type": "cosmosDB",
       "direction": "in",
-      "name": "inputDocument",
+      "name": "input_document",
       "databaseName": "fplstats",
       "collectionName": "elements",
       "connectionStringSetting": "DB_CONNECTION",
