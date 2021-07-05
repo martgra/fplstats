@@ -20,4 +20,4 @@ def main(mytimer: func.TimerRequest, outputblob: func.Out[bytes]):
     fpl_json["download_time"]= download_time
 
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
-    outputblob.set(json.dumps(fpl_json, indent=4, ensure_ascii=False))
+    outputblob.set(json.dumps(fpl_json, ensure_ascii=False))
