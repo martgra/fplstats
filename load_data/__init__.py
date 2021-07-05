@@ -21,4 +21,7 @@ def main(myblob: func.InputStream, outputDoc: func.Out[func.DocumentList]):
     gameweek = transformations.get_game_week(outdata["events"])
     transformations.add_gw_and_download_time(outdata["elements"], download_time, gameweek)
     transformations.add_unique_id(outdata["elements"])
+    transformations.add_team_name(outdata["elements"], outdata["teams"])
+    all_fixtures = transformations.create_opponents(outdata["teams"])
+    transformations.add_opponents(outdata["elements"], all_fixtures)
     outputDoc.set(func.DocumentList(outdata["elements"]))
