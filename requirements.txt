@@ -5,3 +5,5 @@
 azure-functions
 requests
 pandas
+wheel
+git+https://github.com/martgra/fpl2021.git
